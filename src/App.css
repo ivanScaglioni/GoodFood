@@ -1,0 +1,13 @@
+
+.food{
+    order: 1;
+    background-color: rgb(163, 184, 184);
+}
+.drink{
+    order: 2;
+    background-color: rgb(64, 78, 142);
+}
+.dessert{
+    order: 3;
+}
+
