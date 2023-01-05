@@ -1,13 +1,30 @@
+*{
+    scroll-behavior: smooth;
+}
 
-.food{
+#food{
     order: 1;
     background-color: rgb(163, 184, 184);
 }
-.drink{
+#drink{
     order: 2;
     background-color: rgb(64, 78, 142);
 }
-.dessert{
+#dessert{
     order: 3;
+
 }
 
+#order{
+    transition-duration: 1s;
+    
+}
+
+.description-food{
+    transform: translateY(-100%);
+}
+
+.description-food:hover{
+    opacity: 1;
+    border: 1px solid red;
+}
