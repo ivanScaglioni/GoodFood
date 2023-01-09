@@ -1,0 +1,21 @@
+[
+    {
+        "id":"p1",
+        "imgURL":"https://res.cloudinary.com/ivanscacloud/image/upload/v1672697222/goodfood/promo4-e_ubrebh.png"
+
+    },
+    {
+        "id":"p2",
+        "imgURL":"https://res.cloudinary.com/ivanscacloud/image/upload/v1672697220/goodfood/promo2-e_mvvf8k.png"
+    },
+    {
+        "id":"p3",
+        "imgURL":"https://res.cloudinary.com/ivanscacloud/image/upload/v1672697220/goodfood/promo1-e_kwqqtm.png"
+
+    },
+    {
+        "id":"p4",
+        "imgURL":"https://res.cloudinary.com/ivanscacloud/image/upload/v1672697220/goodfood/promo3-e_a0rno8.png"
+    }
+
+]

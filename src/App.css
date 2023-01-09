@@ -21,10 +21,42 @@
 }
 
 .description-food{
-    transform: translateY(-100%);
+    display: flex;
+   
 }
 
 .description-food:hover{
     opacity: 1;
     border: 1px solid red;
+    background-color: rgba(62, 57, 57, 0.6);
+    color:  rgb(255, 255, 255);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    
+}
+
+.add{
+    background-color: white;
+
+}
+
+.remove{
+    background-color: rgb(113, 238, 88);
+}
+
+.list-card{
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+   
+    
+}
+.list-card::-webkit-scrollbar{
+    width: 0px;
+}
+
+.img-card{
+    position: fixed;
 }

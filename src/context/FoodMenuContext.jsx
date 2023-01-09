@@ -18,11 +18,12 @@ export function FoodMenuContextProvider(props) {
   }, []);
 
   function initOrder(ele) {
-    console.log(innerHeight)
+    
     ele.style.top = `${innerHeight - ele.offsetHeight}px`;
   }
 
   function handleOrder(event) {
+  
     if (openOrder) {
       elemOrder.style.top = `${innerHeight - headerOrder.offsetHeight}px`;
       setOpenOrder(false);
@@ -42,14 +43,24 @@ export function FoodMenuContextProvider(props) {
       },
     ]);
   }
-
+  
   function deleteOrder(id) {
-    const itemOrd =document.getElementById(id)
+    const itemOrd = document.getElementById(`item-${id}`)
+    const btnCard = document.getElementById(`btn-card-${id}`)   
     elemOrder.style.top = `${(innerHeight + itemOrd.offsetHeight) - elemOrder.offsetHeight}px`;
-    setOrder(order.filter((ord) => ord.id != id));
-    
-    
+    btnCard.className = btnCard.className.replace("remove", "add");
+    setOrder(order.filter((ord) => ord.id != id)); 
+  }
 
+  window.onresize = ()=>{
+    
+    if(openOrder){
+      elemOrder.style.top = `${innerHeight - elemOrder.offsetHeight}px`;
+    }else{
+      elemOrder.style.top = `${innerHeight - headerOrder.offsetHeight}px`;
+    }
+    
+    
   }
 
   return (

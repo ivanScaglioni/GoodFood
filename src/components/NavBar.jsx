@@ -1,7 +1,7 @@
 
 function NavBar() {
   return (
-    <div className="fixed top-0 bg-black z-20">
+    <div className="fixed top-0 bg-black z-20 flex gap-10  w-full justify-center">
         <a href="#food"> FOODS</a>
         <a href="#drink"> DRINKS </a>
         <a href="#dessert"> DESSERT</a>

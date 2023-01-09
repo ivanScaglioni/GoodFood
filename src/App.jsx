@@ -9,14 +9,14 @@ function App() {
 
   return (
     <>
-      <Order />
       <NavBar/>
-      <Promo />
-      
-      <Menu />
-      
-      
+      <div className="max-w-[800px] mx-auto ">
+        <Order />
+        <Promo />
+        <Menu />
+      </div>
     </>
+
 
      
   
