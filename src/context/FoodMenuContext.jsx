@@ -6,66 +6,105 @@ export const FoodMenuContext = createContext();
 export function FoodMenuContextProvider(props) {
   const [menu, setMenu] = useState([]);
   const [order, setOrder] = useState([]);
-  const [elemOrder, setElemOrder] = useState();
-  const [openOrder, setOpenOrder] = useState(false);
-  const [headerOrder, setHeaderOrder] = useState();
+  const [total, setTotal] = useState(0);
+  const [containerItem, setContainerItem] = useState()
+  const [allUnits, setAllUnits] = useState(0);
+  let openOrder = false;
 
   useEffect(() => {
     setMenu(data);
-    setElemOrder(document.getElementById("order"));
-    setHeaderOrder(document.getElementById("header-order"));
-    initOrder(document.getElementById("order"));
+    setContainerItem(document.getElementById("container-item"))
   }, []);
 
-  function initOrder(ele) {
-    
-    ele.style.top = `${innerHeight - ele.offsetHeight}px`;
-  }
+
 
   function handleOrder(event) {
   
-    if (openOrder) {
-      elemOrder.style.top = `${innerHeight - headerOrder.offsetHeight}px`;
-      setOpenOrder(false);
-    } else if (order.length > 0){
-      elemOrder.style.top = `${innerHeight - elemOrder.offsetHeight}px`;
-      setOpenOrder(true);
+    if(event.target.id == 'make-order'){
+      return
     }
+    if(openOrder){
+      containerItem.style.maxHeight = '0px'
+      openOrder = false;
+    }else if(order.length > 0 ){
+      containerItem.style.maxHeight = '30vh'
+      openOrder=true;
+    }
+    
   }
 
-  function addOrder(ord) {
+  function addOrder(product) {
     setOrder([
       ...order,
       {
-        id: ord.id,
-        name: ord.name,
-        price: ord.price,
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        units: 1,
       },
     ]);
-  }
-  
-  function deleteOrder(id) {
-    const itemOrd = document.getElementById(`item-${id}`)
-    const btnCard = document.getElementById(`btn-card-${id}`)   
-    elemOrder.style.top = `${(innerHeight + itemOrd.offsetHeight) - elemOrder.offsetHeight}px`;
-    btnCard.className = btnCard.className.replace("remove", "add");
-    setOrder(order.filter((ord) => ord.id != id)); 
+    setAllUnits(allUnits + 1);
+    setTotal(total + product.price);
   }
 
-  window.onresize = ()=>{
-    
-    if(openOrder){
-      elemOrder.style.top = `${innerHeight - elemOrder.offsetHeight}px`;
-    }else{
-      elemOrder.style.top = `${innerHeight - headerOrder.offsetHeight}px`;
+  function deleteOrder(product) {
+
+    const card = document.getElementById(`card-${product.id}`);
+    card.className = card.className.replace("remove", "add");
+    const orderProduct = order.find((o) => o.id == product.id);
+    setOrder(order.filter((ord) => ord.id != product.id));
+    if(allUnits - orderProduct.units == 0){
+      containerItem.style.maxHeight = '0px'
+      openOrder = false;
     }
-    
-    
+    setAllUnits(allUnits - orderProduct.units);
+    setTotal(total - (orderProduct.price * orderProduct.units) )
+    // handleOrder('resize');
+  
+    return
   }
+
+  function handleUnits(i, n) {
+    if (order[i].units + n < 1) {
+      return;
+    }
+    order[i].units += n;
+    setOrder([...order]);
+    setTotal( total +(order[i].price * n))
+    setAllUnits(allUnits + n);
+  }
+
+  function reset(){
+    if(order.length == 0){
+      return;
+    }
+    for (let index = 0; index < order.length; index++) {
+      const element = document.getElementById(`card-${order[index].id}`)
+      element.className = element.className.replace("remove", "add");
+    }
+    setOrder([])
+    setTotal(0)
+    setAllUnits(0)
+    containerItem.style.maxHeight = '0px'
+    openOrder = false;
+    const modalElement = document.getElementById('modal-reorder')
+    modalElement.style.display="flex"
+  }
+
 
   return (
     <FoodMenuContext.Provider
-      value={{ order, menu, addOrder, deleteOrder, handleOrder }}
+      value={{
+        total,
+        order,
+        menu,
+        allUnits,
+        addOrder,
+        deleteOrder,
+        handleOrder,
+        handleUnits,
+        reset
+      }}
     >
       {props.children}
     </FoodMenuContext.Provider>

@@ -1,26 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { FoodMenuContext } from "../context/FoodMenuContext";
 
 function FoodCard({ products }) {
   const { addOrder, deleteOrder } = useContext(FoodMenuContext);
-  // const [gallery, setGallery] = useState();
+
   let gallery;
 
   let card;
 
   function handleBtnCard(event, product) {
-
-    if (event.target.className.includes("add")) {
-      event.target.className = event.target.className.replace("add", "remove");
+    const myCard = document.getElementById(`card-${product.id}`)
+   
+    if (myCard.className.includes("add")) {
+      myCard.className = myCard.className.replace("add", "remove");
       addOrder(product);
     } else {
-      event.target.className = event.target.className.replace("remove", "add");
-      deleteOrder(product.id);
+      myCard.className = myCard.className.replace("remove", "add");
+      deleteOrder(product);
     }
+    
   }
 
   function mouseDown(event) {
-    if(event.target.id.includes('btn-card')){return};
+    if (event.target.className.includes("btn-card")) {
+      
+      return;
+    }
+
     gallery = document.getElementById(`gallery-${products[0].type}`);
     card = document.getElementsByClassName("card")[0];
     if (window.innerWidth / 2 > event.clientX) {
@@ -32,38 +38,57 @@ function FoodCard({ products }) {
 
   return (
     <div
-      draggable="true"
-      id={`gallery-${products[0].type}`}
-      className="flex list-card"
-      onMouseDown={(e) => mouseDown(e, products[0].type)}
+
+      
+      className="flex flex-col"
+      
       dir="ltr"
     >
-      {products.map((product) => (
-        <div
-          className="card min-w-max snap-center text-center  bg-slate-800"
-          key={product.id}
 
-        >
-          <div>{product.name}</div>
-          <button
-            id={`btn-card-${product.id}`}
-            className="w-full add"
-            onClick={(e) => handleBtnCard(e, product)}
+      <div className="flex list-card gap-4" draggable="true" id={`gallery-${products[0].type}`} onMouseDown={(e) => mouseDown(e, products[0].type)}>
+        {products.map((product) => (
+          <div
+            id={`card-${product.id}`}
+            className="card min-w-max snap-center text-center add"
+            key={product.id}
           >
-            add
-          </button>
+            <button onClick={(e) => handleBtnCard(e, product)} id={`btn-card-${product.id}`} className="card-header btn-card flex w-full add">
+              <div className="w-full btn-card">
+                <div className="btn-card">{product.name}</div>
+                <div className="btn-card text-3xl">
+                  ${product.price}
+                </div>
+                
+              </div>
+              {/* <div className="  ">
+                <button
+                  id={`btn-card-${product.id}`}
+                  className="btn-card add h-full px-4 rounded-l-full"
+                  onClick={(e) => handleBtnCard(e, product)}
+                >
+                  +
+                </button>
+              </div> */}
+            </button>
 
-          <div className="max-w-[400px] w-screen h-[100vh] max-h-[400px]">
-            <div className="h-0">
-              <img src={product.imgURL} className="card-img" alt="" />
-            </div>
 
-            <div className="description-food max-w-[400px] w-screen h-[100vh] max-h-[400px] opacity-0  z-1">
-              {product.description}
+            <div className="card-content">
+              <div className="h-0">
+                <img
+                  src={product.imgURL}
+                  className="card-img max-w-[250px] w-screen h-[100vh] max-h-[310px] object-cover "
+                  alt=""
+                />
+              </div>
+
+              <div className="description-food max-w-[250px] w-screen h-[100vh] max-h-[310px] opacity-0  z-1">
+                {product.description}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      
     </div>
   );
 }
