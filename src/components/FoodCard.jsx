@@ -26,7 +26,9 @@ function FoodCard({ products }) {
       
       return;
     }
-
+    if(window.innerWidth < 600){
+      return
+    }
     gallery = document.getElementById(`gallery-${products[0].type}`);
     card = document.getElementsByClassName("card")[0];
     if (window.innerWidth / 2 > event.clientX) {
@@ -60,15 +62,7 @@ function FoodCard({ products }) {
                 </div>
                 
               </div>
-              {/* <div className="  ">
-                <button
-                  id={`btn-card-${product.id}`}
-                  className="btn-card add h-full px-4 rounded-l-full"
-                  onClick={(e) => handleBtnCard(e, product)}
-                >
-                  +
-                </button>
-              </div> */}
+
             </button>
 
 
@@ -76,12 +70,12 @@ function FoodCard({ products }) {
               <div className="h-0">
                 <img
                   src={product.imgURL}
-                  className="card-img max-w-[250px] w-screen h-[100vh] max-h-[310px] object-cover "
+                  className="card-img max-w-[350px] w-screen h-[100vh] max-h-[400px] object-cover "
                   alt=""
                 />
               </div>
 
-              <div className="description-food max-w-[250px] w-screen h-[100vh] max-h-[310px] opacity-0  z-1">
+              <div className="description-food max-w-[350px] w-screen h-[100vh] max-h-[400px] opacity-0  z-1">
                 {product.description}
               </div>
             </div>

@@ -4,7 +4,7 @@ import  beersvg   from "../assets/icons/beer.svg"
 
 function NavBar() {
   return (
-    <div className="fixed top-0    z-50  gap-4 rounded-b flex flex-col  self-end justify-center">
+    <div className="fixed top-0  p-2  z-50  gap-4 rounded-b flex   self-end justify-center">
         <a href="#food"> 
           <img className="h-[30px]" src={burgersvg} alt="" />
         </a>

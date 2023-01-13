@@ -8,7 +8,7 @@ function Welcome() {
         <div className="w-[87vw] max-w-[400px] text-center">
             
             <p>
-            menu prototype for a restaurant designed for mobile and the user experience for more information visit their
+            Menu prototype for a restaurant designed for mobile and the user experience for more information visit their
             </p>
             <a  className="text-orange-400" href="https://github.com/ivanScaglioni/GoodFood">Github repository</a>
 
@@ -16,7 +16,7 @@ function Welcome() {
 
         <img src={qr} alt="" />
         <p className="text-center">
-          idea and creation by  
+          Idea and creation by  
           <a className="text-orange-400" href="https://github.com/ivanScaglioni"> IVAN SCAGLIONI</a>
           
         </p>
