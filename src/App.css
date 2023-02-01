@@ -101,6 +101,10 @@
 .title{
     font-family: 'Pacifico', cursive;
 }
+
+.title-welcome{
+    font-weight: 400;
+}
 .description-food{
     display: flex;
     text-align: center;
@@ -141,6 +145,9 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    padding-right: 70px;
+    /* padding-left: 20px; */
+
     
    
     
@@ -149,9 +156,6 @@
     width: 0px;
 }
 
-.img-card{
-    position: fixed;
-}
 .item-order{
     border-bottom: 1px solid red;
     /* background-color: rgba(254, 226, 190, 0.975); */
@@ -168,7 +172,7 @@
     margin-bottom: 40px;    
     margin-top: 4vmax;
     color: white;
-   border-radius: 5px;
+    border-radius: 5px;
     box-sizing: border-box;
    
 
