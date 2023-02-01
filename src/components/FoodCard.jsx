@@ -54,10 +54,10 @@ function FoodCard({ products }) {
             className="card min-w-max snap-center text-center add"
             key={product.id}
           >
-            <button onClick={(e) => handleBtnCard(e, product)} id={`btn-card-${product.id}`} className="card-header btn-card flex w-full add">
+            <button onClick={(e) => handleBtnCard(e, product)} id={`btn-card-${product.id}`} className="card-header btn-card flex w-full">
               <div className="w-full btn-card">
-                <div className="btn-card">{product.name}</div>
-                <div className="btn-card text-3xl">
+                <div className="btn-card text-3xl  text-fuchsia-800">{product.name}</div>
+                <div className="btn-card text-3xl text-fuchsia-600">
                   ${product.price}
                 </div>
                 
@@ -75,7 +75,7 @@ function FoodCard({ products }) {
                 />
               </div>
 
-              <div className="description-food max-w-[350px] w-screen h-[100vh] max-h-[400px] opacity-0  z-1">
+              <div className="description-food text-xl max-w-[350px] w-screen h-[100vh] max-h-[400px] opacity-0  z-1">
                 {product.description}
               </div>
             </div>

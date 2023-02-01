@@ -3,16 +3,18 @@ import qr from "../assets/qrcode.png"
 
 function Welcome() {
   return (
-    <div className="w-full z-20  gap-5 h-[100vh] text-lg flex flex-col flex-wrap items-center justify-center content-center  bg-pink-900">
-        <div className="text-5xl">Good Food</div>
-        <div className="w-[87vw] max-w-[400px] text-center">
+    <div className="w-full z-20  gap-5 h-[100vh] text-lg flex flex-col flex-wrap items-center justify-center content-center  bg-fuchsia-900">
+        <div className="text-5xl title">Good Food</div>
+        <div className="w-[87vw] max-w-[400px] text-2xl text-center">
             
             <p>
-            Menu prototype for a restaurant designed for mobile and the user experience for more information visit their
+            Menu prototype for a restaurant designed for mobile and the user experience for more information visit their 
+            <a  className="text-orange-400  " href="https://github.com/ivanScaglioni/GoodFood"> Github repository</a>
             </p>
-            <a  className="text-orange-400" href="https://github.com/ivanScaglioni/GoodFood">Github repository</a>
+           
 
         </div>
+          
 
         <img src={qr} alt="" />
         <p className="text-center">
@@ -21,9 +23,7 @@ function Welcome() {
           
         </p>
            
-        <div>
-          BUON APPETITO
-        </div>
+
     </div>
   )
 }

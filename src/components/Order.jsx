@@ -15,7 +15,7 @@ function Order() {
     <div
       id="order"
       draggable="false"
-      className="w-[100vw] max-w-[800px] h-auto fixed z-10 max-h-[34vh] mx-auto"
+      className="w-[100vw] max-w-[800px] h-auto fixed z-10 max-h-[34vh] mx-auto flex flex-col"
     >
       <div
         id="header-order"
@@ -27,14 +27,19 @@ function Order() {
             {allUnits}
           </div>
           
-          <img className="h-[25px] pl-2" src={cart} alt="" />
+          <img className="h-[25px] pl-2 " src={cart} alt="" />
           
         </div>
      
         
-        <div>
-          ${total}
-          <button  onClick={reset}  id="make-order" className="ml-2 pl-2 underline underline-offset-1  text-violet-900 ">make order</button>
+        <div className="flex gap-3">
+          <div className="total">
+            Total 
+          </div>
+
+          <div>$ {total}</div>
+          
+          <button  onClick={reset}  id="make-order" className=" ">order</button>
         </div>
 
        
@@ -47,7 +52,7 @@ function Order() {
             id={`item-${ord.id}`}
             key={ord.id}
           >
-            <div className="self-center flex gap-4">
+            <div className="self-center flex gap-4 text">
               <button className="self-center" onClick={() => deleteOrder(ord)}>
                 <img  src={trash} alt="" />
               </button>

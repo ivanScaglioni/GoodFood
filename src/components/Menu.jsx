@@ -46,7 +46,7 @@ function Menu() {
       
       {arrByCate.map((arr,index) => (
           <div id={`${arr[index][0].category}`} className="flex flex-col" key={index}>
-            <h1  className="text-3xl uppercase self-start title-category">{arr[index][0].category}</h1>
+            <h1  className="text-3xl uppercase self-start title-category title">{arr[index][0].category}</h1>
             <FoodList list={arr} />
           </div>
 
